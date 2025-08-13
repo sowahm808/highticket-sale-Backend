@@ -17,7 +17,10 @@ async function bootstrap() {
   // Register fastify plugins (using Express adapter under the hood is fine)
   // If using Fastify adapter, adjust accordingly.
   // CORS
-  const origins = (process.env.ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
+  const origins = (process.env.ALLOWED_ORIGINS || '')
+    .split(',')
+    .map((s: string) => s.trim())
+    .filter(Boolean);
   app.enableCors({ origin: origins.length ? origins : true, credentials: true });
 
   const port = process.env.PORT ? Number(process.env.PORT) : 4000;
